@@ -43,7 +43,7 @@ public class CameraCharacter : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             Quaternion targetRotation = Quaternion.LookRotation(ray.direction);
 
-            rb.velocity = new Vector3(0, 0, camMove);
+            rb.linearVelocity = new Vector3(0, 0, camMove);
 
             float mousePosx = Input.mousePosition.x;
             float mousePosy = Input.mousePosition.y;
