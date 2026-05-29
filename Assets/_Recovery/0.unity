@@ -857,8 +857,8 @@ MonoBehaviour:
   spawnHelper: 4.5
   objPrefab: {fileID: 2764212260469643599, guid: 4e591afeb4ef2264295d790351d5d9c4, type: 3}
   ballForce: 1250
-  ballCount: 100
-  camMove: 12
+  ballCount: 13
+  camMove: 7
   cursor: {fileID: 1986755426}
   playState: 0
   ballCountText: {fileID: 1115485646}
@@ -974,7 +974,7 @@ Transform:
   m_GameObject: {fileID: 1042814329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1161,9 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385a8976145a63b4291d698cd7545fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 2640000084630041183, guid: 40ecdfcfcd7fd504ab7dee63802521b9, type: 3}
-  spawnCount: 30
-  spawnSpacing: 10
+  blockPrefab: {fileID: 4496859259767681542, guid: 79e2aea11bec8044b944c9f3b61a4dbe, type: 3}
 --- !u!1 &1521217064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1270,7 @@ Transform:
   m_GameObject: {fileID: 1521217064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0108, y: 0.53, z: 174.8}
+  m_LocalPosition: {x: -0.0108, y: 0.53, z: 77.35}
   m_LocalScale: {x: 0.99318796, y: 1, z: 0.24061875}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1406,7 +1404,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 40}
-  m_LocalScale: {x: 10, y: 1, z: 288.7}
+  m_LocalScale: {x: 10, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1446,7 +1444,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986755426
 MonoBehaviour:
