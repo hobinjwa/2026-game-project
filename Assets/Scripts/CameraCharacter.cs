@@ -31,7 +31,10 @@ public class CameraCharacter : MonoBehaviour
         Cursor.visible = false;
 
         playState = true;
-        ballCountText.text = ballCount.ToString();
+        if (ballCountText != null)
+            ballCountText.text = ballCount.ToString();
+        else
+            Debug.LogWarning("CameraCharacter: 'ballCountText' is not assigned in the Inspector.");
     }
 
     void Update()
@@ -55,6 +58,12 @@ public class CameraCharacter : MonoBehaviour
                 ballCount -= 1;
 
                 GameObject ballRigid;
+                if (objPrefab == null)
+                {
+                    Debug.LogError("CameraCharacter: 'objPrefab' is null. Assign a prefab in the Inspector to instantiate.");
+                    return;
+                }
+
                 ballRigid = Instantiate(objPrefab, BallInstantiatePoint, transform.rotation) as GameObject;
                 ballRigid.GetComponent<Rigidbody>().AddForce(targetloc * ballForce);
                 ballCountText.text = ballCount.ToString();
