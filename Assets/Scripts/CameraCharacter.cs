@@ -30,6 +30,19 @@ public class CameraCharacter : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
 
+        // 게임 시작 시 점수 및 콤보 초기화
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.ResetScore();
+        }
+
+        ComboSystem comboSystem = FindObjectOfType<ComboSystem>();
+        if (comboSystem != null)
+        {
+            comboSystem.ResetForNewGame();
+        }
+
         playState = true;
         if (ballCountText != null)
             ballCountText.text = ballCount.ToString();
@@ -57,6 +70,12 @@ public class CameraCharacter : MonoBehaviour
                 Vector3 targetloc = ray.direction;
                 ballCount -= 1;
 
+                // 게임 통계 기록
+                if (GameStatistics.Instance != null)
+                {
+                    GameStatistics.Instance.RecordShot();
+                }
+
                 GameObject ballRigid;
                 if (objPrefab == null)
                 {
@@ -77,18 +96,33 @@ public class CameraCharacter : MonoBehaviour
         {
             playState = false;
 
+            // 점수 가져오기
+            int finalScore = ScoreManager.Instance.GetTotalScore();
+
+            // 점수 기록 저장
+            if (ScoreHistory.Instance != null)
+            {
+                ScoreHistory.Instance.SaveScore(finalScore);
+            }
+
             if (hitCount >= 10)
             {
-                mainText.text = "Success!";
+                mainText.text = $"Success!\nScore: {finalScore}";
                 mainText.transform.DOScale(1, 1).SetEase(Ease.OutBack);
             }
             else
             {
-                mainText.text = "You Failed!";
+                mainText.text = $"You Failed!\nScore: {finalScore}";
                 mainText.transform.DOScale(1, 1).SetEase(Ease.OutBack);
             }
 
             rb.isKinematic = true;
+            // 연속 쉐이크가 실행 중이면 중지
+            CameraShake camShake = FindObjectOfType<CameraShake>();
+            if (camShake != null)
+            {
+                camShake.StopContinuousShake();
+            }
             Invoke(nameof(RestartLevel), 4);
         }
     }
